@@ -5,3 +5,5 @@ __pycache__/
 data/
 logs/
 tracker.txt 
+Steps.txt
+data_transformation.txt 

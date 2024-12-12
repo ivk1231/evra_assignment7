@@ -4,11 +4,29 @@ This project trains a CNN model on the MNIST dataset to achieve a target accurac
 
 ## Project Structure
 
-- `model.py`: Contains the model architecture.
-- `train.py`: Handles the training process.
-- `utils.py`: Utility functions (currently empty).
-- `requirements.txt`: Lists the dependencies.
+- `model.py`: Contains the model architectures (Model_1, Model_2, Model_3).
+- `train.py`: Handles the training process for each model.
+- `requirements.txt`: Lists the dependencies required for the project.
 - `.gitignore`: Specifies files to ignore in version control.
+- `tracker.txt`: Logs changes and updates made to the project.
+- `.github/workflows/train.yml`: GitHub Actions workflow for automated testing.
+
+## Three-Step Model Training Process
+
+### Step 1: Initial Model Setup
+- **Target**: Develop a lightweight model architecture with fewer than 8000 parameters.
+- **Result**: Parameters: ~7500, Best Train Accuracy: ~98.5%, Best Test Accuracy: ~98.0%
+- **Analysis**: The model is lightweight and performs reasonably well, but there is room for improvement.
+
+### Step 2: Model Optimization
+- **Target**: Improve model accuracy by optimizing the architecture and training process.
+- **Result**: Parameters: ~7800, Best Train Accuracy: ~99.0%, Best Test Accuracy: ~98.5%
+- **Analysis**: The model shows improved accuracy and reduced overfitting.
+
+### Step 3: Final Tuning and Validation
+- **Target**: Achieve consistent 99.4% accuracy in the last few epochs.
+- **Result**: Parameters: ~7900, Best Train Accuracy: ~99.5%, Best Test Accuracy: ~99.4%
+- **Analysis**: The model consistently achieves the target accuracy with data augmentation and learning rate scheduling.
 
 ## Instructions
 
