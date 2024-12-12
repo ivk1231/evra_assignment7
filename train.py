@@ -37,6 +37,10 @@ def train_model(model_class):
             print("Target accuracy reached.")
             break
 
+    # Save final accuracy to a file
+    with open("accuracy.txt", "w") as f:
+        f.write(f"Final Accuracy: {accuracy:.2f}%\n")
+
 if __name__ == "__main__":
     # Choose which model to train
     train_model(Model_1)  # or train_model(Model_2) 

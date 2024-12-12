@@ -28,4 +28,12 @@ jobs:
 
     - name: Run training script
       run: |
-        python train.py 
+        python train.py
+
+    - name: Validate results
+      run: |
+        if grep -q "Final Accuracy: 99.4%" accuracy.txt; then
+          echo "Validation passed: Target accuracy achieved."
+        else
+          echo "Validation failed: Target accuracy not achieved."
+          exit 1 
