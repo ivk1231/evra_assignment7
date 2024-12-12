@@ -36,4 +36,5 @@ jobs:
           echo "Validation passed: Target accuracy achieved."
         else
           echo "Validation failed: Target accuracy not achieved."
-          exit 1 
+          exit 1
+        fi 
