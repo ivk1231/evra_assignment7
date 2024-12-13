@@ -23,13 +23,13 @@ class Model_1(nn.Module):
 class Model_2(nn.Module):
     def __init__(self):
         super(Model_2, self).__init__()
-        # Optimized model with batch normalization and dropout
+        # Optimized model with batch normalization and minimal dropout
         self.conv1 = nn.Conv2d(1, 8, kernel_size=3, stride=1, padding=1)
         self.bn1 = nn.BatchNorm2d(8)
         self.conv2 = nn.Conv2d(8, 16, kernel_size=3, stride=1, padding=1)
         self.bn2 = nn.BatchNorm2d(16)
         self.fc1 = nn.Linear(16 * 7 * 7, 64)
-        self.dropout = nn.Dropout(0.25)
+        self.dropout = nn.Dropout(0.1)  # Further reduced dropout
         self.fc2 = nn.Linear(64, 10)
 
     def forward(self, x):
@@ -45,14 +45,14 @@ class Model_2(nn.Module):
 class Model_3(nn.Module):
     def __init__(self):
         super(Model_3, self).__init__()
-        # Final model with optimized parameters
+        # Final model with minimal regularization
         self.conv1 = nn.Conv2d(1, 8, kernel_size=3, stride=1, padding=1)
         self.bn1 = nn.BatchNorm2d(8)
         self.conv2 = nn.Conv2d(8, 16, kernel_size=3, stride=1, padding=1)
         self.bn2 = nn.BatchNorm2d(16)
-        self.fc1 = nn.Linear(16 * 7 * 7, 64)
-        self.dropout = nn.Dropout(0.25)
-        self.fc2 = nn.Linear(64, 10)
+        self.fc1 = nn.Linear(16 * 7 * 7, 128)  # Increased capacity
+        self.dropout = nn.Dropout(0.1)  # Further reduced dropout
+        self.fc2 = nn.Linear(128, 10)
 
     def forward(self, x):
         x = F.relu(self.bn1(self.conv1(x)))
