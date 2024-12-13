@@ -15,7 +15,7 @@ transform = transforms.Compose([
 train_dataset = datasets.MNIST('./data', train=True, download=True, transform=transform)
 train_loader = torch.utils.data.DataLoader(train_dataset, batch_size=128, shuffle=True)
 
-def train_model(model_class, model_name):
+def train_model(model_class, model_name, accuracy_file):
     model = model_class()
     criterion = nn.CrossEntropyLoss()
     optimizer = optim.Adam(model.parameters(), lr=0.001)
@@ -49,13 +49,17 @@ def train_model(model_class, model_name):
             print(f"{model_name} - Target accuracy reached.")
             break
 
-    with open(f"{model_name}_accuracy.txt", "w") as f:
-        f.write(f"Final Accuracy: {accuracy:.2f}%\nBest Accuracy: {best_accuracy:.2f}%\n")
+    with open(accuracy_file, "a") as f:
+        f.write(f"{model_name} - Final Accuracy: {accuracy:.2f}%, Best Accuracy: {best_accuracy:.2f}%\n")
 
 if __name__ == "__main__":
+    # Clear the accuracy file
+    with open("accuracy.txt", "w") as f:
+        f.write("Training Results:\n")
+
     print("\nTraining Model_1:")
-    train_model(Model_1, "Model_1")
+    train_model(Model_1, "Model_1", "accuracy.txt")
     print("\nTraining Model_2:")
-    train_model(Model_2, "Model_2")
+    train_model(Model_2, "Model_2", "accuracy.txt")
     print("\nTraining Model_3:")
-    train_model(Model_3, "Model_3")
+    train_model(Model_3, "Model_3", "accuracy.txt")
